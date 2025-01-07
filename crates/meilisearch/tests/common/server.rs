@@ -380,7 +380,7 @@ impl<State> Server<State> {
         self.service.get(url).await
     }
 
-    pub async fn get_batch(&self, batch_id: u32) -> (Value, StatusCode) {
+    pub async fn get_batch(&self, batch_id: u64) -> (Value, StatusCode) {
         let url = format!("/batches/{}", batch_id);
         self.service.get(url).await
     }

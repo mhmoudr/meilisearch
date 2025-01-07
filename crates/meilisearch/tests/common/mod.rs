@@ -34,6 +34,16 @@ impl Value {
         }
     }
 
+    pub fn batch_uid(&self) -> u64 {
+        if let Some(batch_uid) = self["batch_uid"].as_u64() {
+            batch_uid
+        } else if let Some(batch_uid) = self["batchUid"].as_u64() {
+            batch_uid
+        } else {
+            panic!("Didn't find any task batch id in: {self}");
+        }
+    }
+
     /// Return `true` if the `status` field is set to `succeeded`.
     /// Panic if the `status` field doesn't exists.
     #[track_caller]
